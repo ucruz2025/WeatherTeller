@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="./style.css">
+    <title>Weather Teller</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col search">
+                <h2>Search for a City:</h2>
+                <input type="text" id="searchInput" placeholder="City">
+                <button type="button" id="searchBtn" class="btn btn-primary">Search</button>
+            </div>
+            <div class="col-8">
+                <div class="row-8 cityInfo">
+                    <div class="row">
+                        <h3 id="cityTitle">City Info</h3>
+                        <h2 id="currentDate"></h2>
+                        <img id="weatherIcon">
+                    </div>
+                    <div class="row">
+                        <p id="temp">Temperature:</p>
+                    </div>
+                    <div class="row">
+                        <p id="humidity">Humidity:</p>
+                    </div>
+                    <div class="row">
+                        <p id="windSpeed">Wind Speed:</p>
+                    </div>
+                    <div class="row">
+                        <p id="UVIndex">UV Index:</p>
+                    </div>
+                </div>
+                <div class="row-4 forecast">
+                    <div class="row">
+                        <h2>5-Day Forecast:</h2>
+                    </div>
+                    <div class="row cardRow">
+                        <div class="card bg-primary">
+                            <div class="date1">Date:</div>
+                            <div class="temp1">Temp:</div>
+                            <div class="hum1">Humidity:</div>
+                        </div>
+                        <div class="card bg-primary">
+                            <div class="date2">Date:</div>
+                            <div class="temp2">Temp:</div>
+                            <div class="hum2">Humidity:</div>
+                        </div>
+                        <div class="card bg-primary">
+                            <div class="date3">Date:</div>
+                            <div class="temp3">Temp:</div>
+                            <div class="hum3">Humidity:</div>
+                        </div>
+                        <div class="card bg-primary">
+                            <div class="date4">Date:</div>
+                            <div class="temp4">Temp:</div>
+                            <div class="hum4">Humidity:</div>
+                        </div>
+                        <div class="card bg-primary">
+                            <div class="date5">Date:</div>
+                            <div class="temp5">Temp:</div>
+                            <div class="hum5">Humidity:</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    text-align: center;
+    color: white;
+    background-color:lightslategray;
+    padding: 10px;
+}
+
+.search{
+    background-color: rgb(223, 223, 223);
+}
+
+.cityInfo{
+    background-color: white;
+    border: solid 1px rgb(82, 82, 82);
+    padding: 10px;
+}
+
+.forecast{
+    background-color: white;
+    padding: 10px;
+}
+
+.cardRow{
+    color: white;
+}
