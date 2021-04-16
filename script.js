@@ -1,6 +1,5 @@
 const searchBtn = document.getElementById('searchBtn');
 
-
 const APIkey = '056e9bf8b8aa6eeeaf13178eaab49e66';
 const cityURL0 = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const cityURL1 = '&appid=';
@@ -13,17 +12,55 @@ const imperial = '&units=imperial';
 
 var citySearch = [];
 
-searchBtn.addEventListener('click', function(){
+function renderCityHistory(){
+    var searchHistory = document.getElementById('searchHistory');
+    searchHistory.innerHTML = "";
+    
+    for (var i = 0; i < citySearch.length; i++){
+        var history = citySearch[i];
+        console.log("here");
+        var li = document.createElement("li");
+        li.textContent = history;
+        li.setAttribute("lastSearch", i);
+
+        searchHistory.appendChild(li);
+    }
+}
+
+function storeCityHistory(){
+    localStorage.setItem('citySearch', JSON.stringify(citySearch))
+}
+
+//function that checks if input is already stored in localStorage
+
+function init(){
+    var storedCities = JSON.parse(localStorage.getItem('citySearch'));
+
+    if (storedCities !== null){
+        citySearch = storedCities;
+    }
+
+    renderCityHistory();
+}
+
+searchBtn.addEventListener('click', function(event){
+    event.preventDefault();
     const searchInput = document.getElementById('searchInput').value;
     console.log(searchInput);
+
+    citySearch.push(searchInput);
+    searchInput.value = "";
+
     currentWeather(searchInput);
     fiveDayForecast(searchInput);
-    renderCityHistory(searchInput);
+    storeCityHistory();
+    renderCityHistory();
 });
 
 function currentWeather(city){
     var url = cityURL0 + city + cityURL1 + APIkey + imperial;
     console.log(url);
+    console.log(city)
     fetch(url)
         .then(function(data){
             return data.json();
@@ -53,6 +90,7 @@ function uvIndex (lat, lon){
         })
 }
 
+//Need to finish fiveDayForecast
 function fiveDayForecast(city){
     var url = dayURL0 + city + dayURL1 + APIkey + imperial;
     console.log(url);
@@ -66,19 +104,4 @@ function fiveDayForecast(city){
         })
 }
 
-function renderCityHistory(city){
-    
-
-    var searchHistory = document.getElementById('searchHistory');
-
-    for (var i = 0; i < citySearch.length; i++){
-        var history = citySearch[i];
-
-        var li = document.createElement("li");
-        li.textContent = history;
-        li.setAttribute("lastSearch", i);
-
-        li.appendChild(city)
-        searchHistory.appendChild(li);
-    }
-}
+init()
