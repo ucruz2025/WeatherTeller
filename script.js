@@ -18,7 +18,6 @@ function renderCityHistory(){
     
     for (var i = 0; i < citySearch.length; i++){
         var history = citySearch[i];
-        console.log("here");
         var li = document.createElement("li");
         li.textContent = history;
         li.setAttribute("lastSearch", i);
@@ -46,7 +45,6 @@ function init(){
 searchBtn.addEventListener('click', function(event){
     event.preventDefault();
     const searchInput = document.getElementById('searchInput').value;
-    console.log(searchInput);
 
     citySearch.push(searchInput);
     searchInput.value = "";
@@ -60,7 +58,7 @@ searchBtn.addEventListener('click', function(event){
 function currentWeather(city){
     var url = cityURL0 + city + cityURL1 + APIkey + imperial;
     console.log(url);
-    console.log(city)
+
     fetch(url)
         .then(function(data){
             return data.json();
@@ -101,6 +99,11 @@ function fiveDayForecast(city){
 
         .then(function(response){
             console.log(response)
+            for(i = 0; i < 40; i+=8){
+                document.getElementById("date" + i).textContent = "Date: " + response.list[i].dt_txt.split(' ')[0];
+                document.getElementById("temp" + i).textContent = "Temp: " + response.list[i].main.temp + "F";
+                document.getElementById("hum" + i).textContent = "Humidity: " + response.list[i].main.humidity + "%";
+            }
         })
 }
 
